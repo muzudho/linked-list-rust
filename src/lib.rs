@@ -1,25 +1,11 @@
+pub mod node;
+
+use crate::node::Node;
 use std::cell::RefCell;
 use std::fmt;
 use std::rc::Rc;
 
 type Link<T> = Rc<RefCell<Node<T>>>;
-
-#[derive(Debug)]
-struct Node<T> {
-    value: T,
-    prev: Option<Link<T>>,
-    next: Option<Link<T>>,
-}
-
-impl<T> Node<T> {
-    fn new(value: T) -> Rc<RefCell<Self>> {
-        Rc::new(RefCell::new(Self {
-            value,
-            prev: None,
-            next: None,
-        }))
-    }
-}
 
 #[derive(Default)]
 pub struct LinkedList<T> {
