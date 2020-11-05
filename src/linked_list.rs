@@ -22,6 +22,7 @@ impl<T> LinkedList<T> {
         match self.tail.take() {
             Some(old_tail) => {
                 // さっき tail に入っていたものが、 old_tail です。
+                // `borrow_mut()` - 参照を、同時に１つだけ、変更可能にします。
                 // `RC::clone( )` - 所有者が増えました。
                 old_tail.borrow_mut().next = Some(Rc::clone(&node));
                 // 新しい対象の prevリンク に、 old_tail をセットします。
@@ -48,6 +49,7 @@ impl<T> LinkedList<T> {
                 // さっき tail に入っていたものが、 tail です。
                 if let Some(prev) = tail.borrow_mut().prev.take() {
                     // tailのnextのリンクは切断します。
+                    // `borrow_mut()` - 参照を、同時に１つだけ、変更可能にします。
                     prev.borrow_mut().next = None;
                     // リンクトリストの末尾は tail になります。
                     self.tail = Some(prev);
