@@ -1,6 +1,6 @@
 extern crate linked_list;
 
-use linked_list::{Iter, LinkedList};
+use linked_list::LinkedList;
 
 fn main() {
     println!("Start.");
