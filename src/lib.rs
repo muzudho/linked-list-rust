@@ -5,6 +5,11 @@ pub mod node;
 use std::cell::RefCell;
 use std::rc::Rc;
 
+/// Linked List を作るには工夫が必要です。
+/// [Rustでdoubly linked list](https://blog.ymgyt.io/entry/2019/08/17/013313)
+///
+/// `Rc` - 参照の所有者を複数にします。
+/// `RefCell` - 参照先からでも値が変更できるようにします。
 type Link<T> = Rc<RefCell<Node<T>>>;
 
 #[derive(Default)]
