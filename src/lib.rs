@@ -2,7 +2,6 @@ pub mod iter;
 pub mod linked_list;
 pub mod node;
 
-use crate::node::Node;
 use std::cell::RefCell;
 use std::rc::Rc;
 
@@ -16,6 +15,13 @@ pub struct LinkedList<T> {
     tail: Option<Link<T>>,
     /// ノード数です。
     length: usize,
+}
+
+#[derive(Debug)]
+pub struct Node<T> {
+    pub value: T,
+    pub prev: Option<Link<T>>,
+    pub next: Option<Link<T>>,
 }
 
 impl<T: Clone> IntoIterator for LinkedList<T> {

@@ -1,13 +1,7 @@
-use crate::Link;
 use std::cell::RefCell;
 use std::rc::Rc;
 
-#[derive(Debug)]
-pub struct Node<T> {
-    pub value: T,
-    pub prev: Option<Link<T>>,
-    pub next: Option<Link<T>>,
-}
+use crate::Node;
 
 impl<T> Node<T> {
     /// 対象を持ちます。 `Rc<RefCell< >>` でラッピングするので、
